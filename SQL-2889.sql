@@ -1,0 +1,7 @@
+select p.product_name, sum(s.quantity) as total_qty
+from products p
+join sales s on p.product_id = s.product_id
+join time t on t.time_id = s.time_id
+where p.vegan and p.category = 'Hair Care'
+group by p.product_name
+order by total_qty desc
